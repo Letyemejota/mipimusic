@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subir Música | MipiMusic</title>
+  <link rel="icon" href="maqueta del logo.ico" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style subir musica.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="container fade-in" style="margin-top: 100px;">
+    <h1>🎤 Subir Nueva Canción</h1>
+    <p class="subtexto">Publicá tu música y hacé que el mundo te escuche.</p>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="titulo">Título de la canción</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Ej. Flow de barrio" required />
+
+      <label for="cover">Portada (imagen)</label>
+      <input type="file" id="cover" name="cover" accept="image/*" required />
+
+      <label for="audio">Archivo de audio (MP3)</label>
+      <input type="file" id="audio" name="audio" accept="audio/*" required />
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="4" placeholder="¿De qué trata tu canción?" required></textarea>
+
+      <button type="submit" class="btn">Subir</button>
+    </form>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append("titulo", document.getElementById("titulo").value);
+      formData.append("cover", document.getElementById("cover").files[0]);
+      formData.append("audio", document.getElementById("audio").files[0]);
+      formData.append("descripcion", document.getElementById("descripcion").value);
+
+      const res = await fetch("/subir", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      const msg = document.getElementById("resultado");
+      msg.textContent = data.success ? "✅ ¡Canción subida con éxito!" : "❌ Error al subir la canción.";
+      msg.style.color = data.success ? "limegreen" : "crimson";
+    });
+  </script>
+</body>
+</html>

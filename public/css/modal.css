@@ -1,0 +1,105 @@
+/* 🎯 Base del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* 🎯 Preset visual animado: modal-flotante */
+.modal-flotante {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal.show .modal-flotante {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Inputs y botón con estilo */
+.modal-flotante input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1e1e1e;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.modal-flotante input:focus {
+  border-color: #6302ff;
+}
+
+.modal-flotante button {
+  width: 100%;
+  background-color: #6302ff;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-flotante button:hover {
+  background-color: #7a35ff;
+  transform: scale(1.03);
+}
+
+.modal-flotante .close,
+.modal-flotante .close-register {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-flotante .close:hover,
+.modal-flotante .close-register:hover {
+  color: #fff;
+}
+
+#registerModal select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: var(--input-bg);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}

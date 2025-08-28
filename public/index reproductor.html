@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MipiMusic | Reproductor</title>
+  <link rel="icon" href="Imagenes/maqueta del logo.ico" />
+
+  <!-- Fuentes e iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/Style Reproductor.css">
+</head>
+<body>
+  <header>
+    <!-- Sidebar izquierda -->
+    <div class="menu_side">
+      <h1>Playlist</h1>
+      <div class="playlist">
+        <h4 class="active"><i class="bi bi-music-note"></i> Mi Lista</h4>
+        <h4><i class="bi bi-clock-history"></i> Recién escuchado</h4>
+        <h4><i class="bi bi-star"></i> Recomendaciones</h4>
+      </div>
+
+      <ul class="menu_song">
+        <li class="songItem" data-index="0">
+          <img src="Imagenes/Si No Es Contigo.jpg" alt="Si No Es Contigo">
+          <h5>Si No Es Contigo<br><span class="subtitle">Cris Mj</span></h5>
+          <i class="bi bi-play-circle-fill playListPlay" id="play-0"></i>
+        </li>
+        <li class="songItem" data-index="1">
+          <img src="Imagenes/Safaera.jpg" alt="Safaera">
+          <h5>Safaera<br><span class="subtitle">Bad Bunny, Ñengo Flow</span></h5>
+          <i class="bi bi-play-circle-fill playListPlay" id="play-1"></i>
+        </li>
+        <li class="songItem" data-index="2">
+          <img src="Imagenes/Timeless.jpg" alt="Timeless">
+          <h5>Timeless<br><span class="subtitle">The Weeknd</span></h5>
+          <i class="bi bi-play-circle-fill playListPlay" id="play-2"></i>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Reproductor principal -->
+    <div class="song_side">
+      <div class="current_track">
+        <img src="Imagenes/placeholder.jpg" class="track_cover" id="trackCover" alt="Portada">
+        <h2 id="trackTitle">Título</h2>
+        <p id="trackArtist">Artista</p>
+
+        <audio id="audioPlayer" src=""></audio>
+
+        <div class="controls">
+          <i class="bi bi-skip-start-fill" id="prevBtn"></i>
+          <i class="bi bi-play-circle-fill" id="playPauseBtn"></i>
+          <i class="bi bi-skip-end-fill" id="nextBtn"></i>
+        </div>
+
+        <div class="progress_bar_container">
+          <input type="range" id="seekBar" min="0" max="100" value="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="master_play">
+      <div class="controls">
+        <i class="bi bi-skip-start-fill" id="footerPrev"></i>
+        <i class="bi bi-play-circle-fill" id="footerPlayPause"></i>
+        <i class="bi bi-skip-end-fill" id="footerNext"></i>
+      </div>
+      <span id="footerTrack">🎧 Ninguna canción seleccionada</span>
+      <div class="progress_container">
+        <input type="range" id="footerSeekBar" min="0" max="100" value="0">
+      </div>
+    </div>
+  </header>
+
+  <!-- JavaScript -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Usuario</title>
+</head>
+<body>
+  <h1>Bienvenido, <span id="userName"></span></h1>
+  <button onclick="logout()">Cerrar sesión</button>
+
+  <script>
+    fetch("/auth/session")
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn) {
+          document.getElementById("userName").textContent = data.user;
+        } else {
+          window.location.href = "/index.html";
+        }
+      });
+
+    function logout() {
+      fetch("/auth/logout", { method: "POST" })
+        .then(() => window.location.href = "/index.html");
+    }
+  </script>
+</body>
+</html>

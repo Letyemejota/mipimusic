@@ -1,0 +1,241 @@
+/* ==== VARIABLES Y RESET ==== */
+:root {
+    --color-fondo: #130022;
+    --color-primario: #6c2ffb;
+    --color-secundario: #24003c;
+    --texto-claro: #ffffff;
+    --texto-gris: #bcbcbc;
+    --fuente: 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--fuente);
+    background: var(--color-fondo);
+    color: var(--texto-claro);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* ==== ESTRUCTURA PRINCIPAL ==== */
+  header {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+  
+  /* ==== PANEL IZQUIERDO ==== */
+  .menu_side {
+    width: 25%;
+    background: var(--color-secundario);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .menu_side h1 {
+    font-size: 22px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .playlist h4 {
+    margin-bottom: 1rem;
+    color: var(--texto-gris);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .playlist h4:hover,
+  .playlist h4.active {
+    color: var(--texto-claro);
+    transform: translateX(4px);
+  }
+  
+  .menu_song {
+    margin-top: 2rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .menu_song::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .songItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .songItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .songItem img {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .songItem h5 {
+    font-size: 0.9rem;
+    flex: 1;
+  }
+  
+  .subtitle {
+    font-size: 0.75rem;
+    color: var(--texto-gris);
+  }
+  
+  .playListPlay {
+    font-size: 1.4rem;
+    color: var(--texto-claro);
+    transition: transform 0.2s ease;
+  }
+  
+  .playListPlay:hover {
+    color: var(--color-primario);
+    transform: scale(1.2);
+  }
+  
+  /* ==== PANEL DERECHO ==== */
+  .song_side {
+    width: 75%;
+    background: #1d0033;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+  .current_track {
+    text-align: center;
+  }
+  
+  .track_cover {
+    width: 220px;
+    height: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+  }
+  
+  .track_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .track_artist {
+    font-size: 1rem;
+    color: var(--texto-gris);
+    margin-bottom: 1.2rem;
+  }
+  
+  /* ==== CONTROLES ==== */
+  .controls {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .controls i {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s;
+  }
+  
+  .controls i:hover {
+    transform: scale(1.1);
+    color: var(--color-primario);
+  }
+  
+  /* ==== PROGRESO ==== */
+  .progress_bar_container {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+  }
+  
+  input[type="range"]::-moz-range-track {
+    background: #444;
+    height: 6px;
+    border-radius: 3px;
+  }
+  
+  input[type="range"] {
+    -webkit-appearance: none; /*  para Chrome/Safari */
+    appearance: none;         /*  para navegadores modernos */
+    background: #444;
+    height: 6px;
+    border-radius: 3px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--color-primario);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--color-primario);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  /* ==== BARRA INFERIOR (PLAYER) ==== */
+  .master_play {
+    height: 80px;
+    background: #16002b;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 1rem;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  }
+  
+  .master_play img {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  
+  .master_play span {
+    flex: 1;
+    font-size: 1rem;
+  }
+  
+  .master_play i {
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .master_play i:hover {
+    color: var(--color-primario);
+  }
+  
